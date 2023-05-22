@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:4.5.2
+    container_name: qbittorrent
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/London
+      WEBUI_PORT: 8080
+    volumes:
+      - data:/config
+      - /tank:/tank
+    ports:
+      - 8080:8080
+      - 58261:58261     # Needs port forwarding to be setup on the router
+      - 58261:58261/udp # Needs port forwarding to be setup on the router
+    restart: unless-stopped
+
+volumes:
+  data:
