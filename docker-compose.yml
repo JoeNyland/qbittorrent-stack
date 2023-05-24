@@ -3,19 +3,19 @@ version: "3"
 services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:4.5.2
-    container_name: qbittorrent
+    container_name: ${CONTAINER_NAME:-qbittorrent}
     environment:
-      PUID: 1000
-      PGID: 1000
-      TZ: Europe/London
-      WEBUI_PORT: 8080
+      PUID: ${PUID:-1000}
+      PGID: ${PGID:-1000}
+      TZ: ${TZ:-Europe/London}
+      WEBUI_PORT: ${WEBUI_PORT:-8080} # Needs to be set in qBittorrent settings
     volumes:
       - data:/config
-      - /tank:/tank
+      - ${DOWNLOAD_VOLUME:-/downloads}:${DOWNLOAD_VOLUME:-/downloads} # Needs to be set in qBittorrent settings
     ports:
-      - 8080:8080
-      - 58261:58261     # Needs port forwarding to be setup on the router
-      - 58261:58261/udp # Needs port forwarding to be setup on the router
+      - ${WEBUI_PORT:-8080}:${WEBUI_PORT:-8080}
+      - ${BITTORRENT_PORT:-58261}:${BITTORRENT_PORT:-58261}     # Needs port forwarding to be setup on the router
+      - ${BITTORRENT_PORT:-58261}:${BITTORRENT_PORT:-58261}/udp # Needs port forwarding to be setup on the router
     restart: unless-stopped
 
 volumes:
