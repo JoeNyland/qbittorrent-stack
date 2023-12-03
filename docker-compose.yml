@@ -2,7 +2,7 @@ version: "3"
 
 services:
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:4.5.3
+    image: ghcr.io/hotio/qbittorrent
     container_name: ${CONTAINER_NAME:-qbittorrent}
     environment:
       PUID: ${PUID:-1000}
