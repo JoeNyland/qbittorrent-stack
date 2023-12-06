@@ -3,19 +3,19 @@ version: '3'
 services:
   qbittorrent:
     image: ghcr.io/hotio/qbittorrent
-    container_name: ${CONTAINER_NAME:-qbittorrent}
+    container_name: qbittorrent
     environment:
-      PUID: ${PUID:-1000}
-      PGID: ${PGID:-1000}
-      UMASK: ${UMASK:-002}
-      TZ: ${TZ:-Europe/London}
+      PUID: 1000
+      PGID: 1000
+      UMASK: 002
+      TZ: Europe/London
     volumes:
       - data:/config
-      - ${DOWNLOAD_VOLUME:-/downloads}:${DOWNLOAD_VOLUME:-/downloads} # Needs to be set in qBittorrent settings
+      - /tank/downloads:/tank/downloads
     ports:
-      - 8080:8080 # Web UI port
-      - ${BITTORRENT_PORT:-58261}:${BITTORRENT_PORT:-58261}     # Needs port forwarding to be setup on the router
-      - ${BITTORRENT_PORT:-58261}:${BITTORRENT_PORT:-58261}/udp # Needs port forwarding to be setup on the router
+      - 8080:8080       # Web UI port
+      - 58261:58261     # BitTorrent port
+      - 58261:58261/udp # Needs port forwarding to be setup on the router
     restart: unless-stopped
 
 volumes:
