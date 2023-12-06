@@ -15,5 +15,5 @@ services:
       - /tank/downloads:/tank/downloads
     ports:
       - 8080:8080       # Web UI port
-      - 58261:58261     # BitTorrent port
-      - 58261:58261/udp # Needs port forwarding to be setup on the router
+      - 58261:58261     # BitTorrent port. Needs port forwarding to be setup on the router.
+      - 58261:58261/udp # BitTorrent port. Needs port forwarding to be setup on the router.
