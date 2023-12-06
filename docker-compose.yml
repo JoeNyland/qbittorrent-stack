@@ -4,6 +4,7 @@ services:
   qbittorrent:
     image: ghcr.io/hotio/qbittorrent
     container_name: qbittorrent
+    restart: unless-stopped
     environment:
       PUID: 1000
       PGID: 1000
@@ -16,7 +17,6 @@ services:
       - 8080:8080       # Web UI port
       - 58261:58261     # BitTorrent port
       - 58261:58261/udp # Needs port forwarding to be setup on the router
-    restart: unless-stopped
 
 volumes:
   data:
