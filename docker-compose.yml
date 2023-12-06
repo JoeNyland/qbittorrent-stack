@@ -11,12 +11,9 @@ services:
       UMASK: 002
       TZ: Europe/London
     volumes:
-      - data:/config
+      - /tank/docker/qbittorrent:/config
       - /tank/downloads:/tank/downloads
     ports:
       - 8080:8080       # Web UI port
       - 58261:58261     # BitTorrent port
       - 58261:58261/udp # Needs port forwarding to be setup on the router
-
-volumes:
-  data:
