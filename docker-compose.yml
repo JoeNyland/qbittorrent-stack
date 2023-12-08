@@ -16,4 +16,4 @@ services:
       TZ: Europe/London
     volumes:
       - /containers/qbittorrent:/config
-      - /tank/downloads:/tank/downloads
+      - /downloads:/downloads
