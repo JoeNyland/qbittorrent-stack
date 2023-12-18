@@ -17,3 +17,7 @@ services:
     volumes:
       - /tank/containers/qbittorrent:/config
       - /tank/downloads:/tank/downloads
+      - /tank/media/movies:/tank/media/movies
+      - /tank/media/tv:/tank/media/tv
+      - /tank/media/music:/tank/media/music
+      - /tank/media/xxx:/tank/media/xxx
