@@ -11,6 +11,10 @@ services:
       PGID: 1000
       UMASK: 002
       TZ: Europe/London
+    labels:
+      traefik.enable: true
+      traefik.http.services.qbittorrent.loadbalancer.server.port: 8080
+      traefik.http.routers.qbittorrent.rule: Host(`qbittorrent`)
     volumes:
       - /containers/qbittorrent:/config
       - /downloads:/downloads
