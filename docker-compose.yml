@@ -5,8 +5,8 @@ services:
     restart: unless-stopped
     network_mode: host
     environment:
-      PUID: 991
-      PGID: 994
+      PUID: 997
+      PGID: 995
       UMASK: 002
       TZ: Europe/London
     labels:
