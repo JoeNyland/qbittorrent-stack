@@ -13,10 +13,7 @@ services:
       traefik.enable: true
       traefik.http.services.qbittorrent.loadbalancer.server.port: 8080
       traefik.http.routers.qbittorrent.rule: Host(`qbittorrent`)
-      traefik.http.routers.qbittorrent.middlewares: qbittorrent-ipallowlist
-      traefik.http.middlewares.qbittorrent-ipallowlist.ipallowlist.sourcerange: >
-        2a00:23c8:bda0:b310::/64,
-        10.10.0.0/16
+      traefik.http.routers.qbittorrent.middlewares: trusted-ipallowlist
     volumes:
       - /containers/qbittorrent:/config
       - /downloads:/downloads
