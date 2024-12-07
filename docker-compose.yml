@@ -3,10 +3,14 @@ services:
     image: ghcr.io/hotio/qbittorrent
     container_name: qbittorrent
     restart: unless-stopped
+    expose:
+      - 8080            # Web UI port
     ports:
-      - 8080:8080       # Web UI port
       - 58261:58261     # BitTorrent port. Needs port forwarding to be setup on the router.
       - 58261:58261/udp # BitTorrent port. Needs port forwarding to be setup on the router.
+    networks:
+      - default
+      - proxy
     environment:
       PUID: 991
       PGID: 994
@@ -23,3 +27,5 @@ services:
 networks:
   default:
     enable_ipv6: true
+  proxy:
+    external: true
