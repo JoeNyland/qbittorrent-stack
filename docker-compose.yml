@@ -17,3 +17,7 @@ services:
     volumes:
       - /containers/qbittorrent:/config
       - /downloads:/downloads
+
+networks:
+  default:
+    enable_ipv6: true
