@@ -8,6 +8,7 @@ services:
       - 58261:58261/udp # BitTorrent port. Needs port forwarding to be setup on the router.
     networks:
       - default
+      - servarr
       - proxy
     environment:
       PUID: 991
@@ -26,4 +27,6 @@ networks:
   default:
     enable_ipv6: true
   proxy:
+    external: true
+  servarr:
     external: true
