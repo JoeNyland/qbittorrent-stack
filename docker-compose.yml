@@ -1,7 +1,6 @@
 services:
   qbittorrent:
     image: ghcr.io/hotio/qbittorrent
-    container_name: qbittorrent
     restart: unless-stopped
     ports:
       - 58261:58261     # BitTorrent port. Needs port forwarding to be setup on the router.
