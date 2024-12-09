@@ -1,5 +1,6 @@
 services:
   qbittorrent:
+    container_name: qbittorrent
     image: ghcr.io/hotio/qbittorrent
     restart: unless-stopped
     ports:
